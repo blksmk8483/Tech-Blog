@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const userRoutes = require('./userRoutes');
+const userRoutes = require('./logInOutRoutes');
 const projectRoutes = require('./projectRoutes');
 
 // Include my api routes here
