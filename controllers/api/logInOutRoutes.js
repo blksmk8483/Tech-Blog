@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { runInNewContext } = require('vm');
 const { LogInOut } = require('../../models'); 
 const withAuth = require('../../utils/auth');
 
@@ -7,11 +8,15 @@ const withAuth = require('../../utils/auth');
 // -------- CREATE a new user --------
 router.post('/', async (req, res) => {
 try {
-    const userData = await LogInOut.create(req.body);
+    const userData = await LogInOut.create({
+        username: req.body.username,
+        password: req.body.password,
+    });
 
     req.session.save(() => {
         req.session.user_id = userData.id;
         req.session.logged_in = true;
+        req.session.username = userData.username;
 
         res.status(200).json(userData);
     });
@@ -24,12 +29,12 @@ try {
 router.post('/login', async (req, res) => {
     try {
       const userData = await LogInOut.findOne({ 
-        where: { email: req.body.email } });
+        where: { username: req.body.username } });
   
       if (!userData) {
         res
           .status(400)
-          .json({ message: 'Oh No! The email is wrong!!!. Please try again!' });
+          .json({ message: 'Oh No! The username is wrong!!!. Please try again!' });
         return;
       }
   
@@ -45,6 +50,7 @@ router.post('/login', async (req, res) => {
       req.session.save(() => {
         req.session.user_id = userData.id;
         req.session.logged_in = true;
+        req.session.username = user.username;
         
         res.json({ user: userData, message: 'You are now logged in!' });
       });
