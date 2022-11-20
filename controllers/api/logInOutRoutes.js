@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const { runInNewContext } = require('vm');
+// const { runInNewContext } = require('vm');
 const { LogInOut } = require('../../models'); 
-const withAuth = require('../../utils/auth');
+// const withAuth = require('../../utils/auth');
 
 //---------Nothing is callin withAuth ---------
 
@@ -21,7 +21,8 @@ try {
         res.status(200).json(userData);
     });
 } catch (err) {
-    res.status(400).json(err);
+    // res.status(400).json(err);
+    res.status(400).json({ message: 'I am getting a message here, I thnk....'});
 }
 });
 
