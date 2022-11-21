@@ -3,32 +3,32 @@ const sequelize = require('../config/connection') // Double check this is correc
 const bcrypt = require('bcrypt');
 
 class LogInOut extends Model {
-    checkPassword(loginPw) {
-        return bcrypt.compareSync(loginPw, this.password);
-      }
+  checkPassword(loginPw) {
+    return bcrypt.compareSync(loginPw, this.password);
+  }
 }
 
 LogInOut.init(
-{
+  {
     id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-        autoIncrement: true
-    }, 
-    username: {
-        type: DataTypes.STRING,
-        allowNull: false,
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true
     },
-  password: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    validate: {
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
         len: [8],
+      },
     },
   },
-},
-{
+  {
     hooks: {
       // set up beforeCreate lifecycle "hook" functionality
       beforeCreate: async (newUserData) => {
@@ -44,7 +44,7 @@ LogInOut.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'User'
+    modelName: 'logInOut'
   }
 
 );
