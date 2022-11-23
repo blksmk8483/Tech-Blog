@@ -1,16 +1,12 @@
 const router = require('express').Router();
-// const { runInNewContext } = require('vm');
-const { LogInOut } = require('../../models'); 
-// const withAuth = require('../../utils/auth');
-
-//---------Nothing is callin withAuth ---------
+const { User } = require('../../models'); 
 
 // -------- CREATE a new user --------
 router.post('/', async (req, res) => {
 try {
-    const userData = await LogInOut.create({
-        username: req.body.username,
-        password: req.body.password,
+    const userData = await User.create({
+      username: req.body.username,
+      password: req.body.password,
     });
 
     req.session.save(() => {
@@ -22,14 +18,14 @@ try {
     });
 } catch (err) {
     // res.status(400).json(err);
-    res.status(400).json({ message: 'I am getting a message here, I thnk....'});
+    res.status(400).json(err);
 }
 });
 
-// -------- This creates a new login --------
+// -------- login --------
 router.post('/login', async (req, res) => {
     try {
-      const userData = await LogInOut.findOne({ 
+      const userData = await User.findOne({ 
         where: { username: req.body.username } });
   
       if (!userData) {
@@ -51,7 +47,7 @@ router.post('/login', async (req, res) => {
       req.session.save(() => {
         req.session.user_id = userData.id;
         req.session.logged_in = true;
-        req.session.username = user.username;
+        req.session.username = userData.username;
         
         res.json({ user: userData, message: 'You are now logged in!' });
       });
@@ -64,7 +60,7 @@ router.post('/login', async (req, res) => {
 
 // -------- Logout --------
 router.post('/logout', (req, res) => {
-    if (req.session.loggedIn) {
+    if (req.session.logged_in) {
         req.session.destroy(() => {
             res.status(204).end();
         });

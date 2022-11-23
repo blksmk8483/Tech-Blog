@@ -1,7 +1,12 @@
-const LogInOut = require('./LogInOut');
+const Post = require('./Post');
+const User = require('./User');
 
+Post.belongsTo(User, {
+    foreignKey: 'userId',
+    onDelete: 'CASCADE'
+})
 
-module.exports = LogInOut;
+module.exports = { User, Post };
 
 
 

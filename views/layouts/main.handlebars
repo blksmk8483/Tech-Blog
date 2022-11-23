@@ -13,12 +13,13 @@
   <ul>
     <li class="home"><a href="/">Home</a></li>
     <li class="dashboard"><a href="/dashboard">Dashboard</a></li>
-    {{!-- <li class="login"><a href="/login">Login</a></li> --}}
-      {{#if logged_in}}
+    <li class="login"><a href="/login">Login</a></li>
+    <li class="logout"><a href="/logout" id="logout">Logout</a></li>
+      {{!-- {{#if logged_in}}
       <button id="logout">Logout</button>
         {{else}}
         <a href="/login">Login</a>
-        {{/if}}
+        {{/if}} --}}
   </ul>
 </nav>
 <header>
@@ -30,10 +31,10 @@
       {{{ body }}}
     </main>
 
-  <!-- Render script for logged in users only -->
-  {{#if logged_in}}
+  {{!-- <!-- Render script for logged in users only -->
+  {{#if logged_in}} --}}
   <script src="/js/logout.js"></script>
-  {{/if}}
+  {{!-- {{/if}} --}}
 </body>
 
 </html>
