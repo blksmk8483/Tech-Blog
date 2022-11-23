@@ -6,13 +6,13 @@ router.get('/', withAuth, async (req, res) => {
     try {
       const userData = await Post.findAll({
         where: {
-            userId: req.session.user_id,
+            user_id: req.session.user_id,
         },
       });
   
       const users = userData.map((project) => project.get({ plain: true }));
   
-      res.render('nameMePage', {
+      res.render('dashboard', {
         users,
         // logged_in: req.session.logged_in,
       });
