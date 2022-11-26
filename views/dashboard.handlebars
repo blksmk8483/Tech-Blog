@@ -3,3 +3,56 @@
 <p>I want to be able to create a new blog here.</p>
 
 <script src="/js/logout.js"></script>
+
+
+
+
+<div>
+  <div>
+    <h2>Welcome, {{username}}!</h2>
+  </div>
+</div>
+
+<div>
+  <div>
+    <h3>Create a New Blog:</h3>
+
+    <form class="form new-blog-post">
+     
+     <div>
+        <label for="blog-title">TITLE:</label>
+        <input class="form-input" type="text" id="blog-title" name="blog-title" />
+      </div>
+
+      <div>
+        <label for="blog-body">BODY:</label>
+        <textarea class="form-input" id="blog-body" name="blog-body"></textarea>
+      </div>
+
+      <div>
+        <button type="submit">Create</button>
+      </div>
+
+    </form>
+  </div>
+
+
+  {{#if blogs.length}}
+  <div class="blog-list">
+    <h3>Current Blogs:</h3>
+
+    {{#each blogs as |blog|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/singleBlog/{{blog.id}}">{{blog.username}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{blog.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>
+
+<script src="./js/newblog.js"></script>
