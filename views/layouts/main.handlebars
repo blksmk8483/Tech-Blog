@@ -12,14 +12,17 @@
 <nav class="navbar">
   <ul>
     <li class="home"><a href="/">Home</a></li>
-    <li class="dashboard"><a href="/dashboard">Dashboard</a></li>
+    {{!-- <li class="dashboard"><a href="/dashboard">Dashboard</a></li>
     <li class="login"><a href="/login">Login</a></li>
-    <li class="logout"><a href="/logout" id="logout">Logout</a></li>
-      {{!-- {{#if logged_in}}
-      <button id="logout">Logout</button>
+    <li class="logout"><a href="/logout" id="logout">Logout</a></li> --}}
+  
+{{#if logged_in}}
+        <a href="/dashboard">dashboard</a> |
+        <button class="no-button" id="logout">logout</button>
         {{else}}
-        <a href="/login">Login</a>
-        {{/if}} --}}
+        <a href="/login">login</a>
+        {{/if}}
+
   </ul>
 </nav>
 <header>
@@ -27,14 +30,13 @@
 </header>
 
     <main>
-      <!-- Render the sub layout -->
+
       {{{ body }}}
     </main>
 
-  {{!-- <!-- Render script for logged in users only -->
-  {{#if logged_in}} --}}
+  {{#if logged_in}}
   <script src="/js/logout.js"></script>
-  {{!-- {{/if}} --}}
+  {{/if}}
 </body>
 
 </html>
