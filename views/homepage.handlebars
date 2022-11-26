@@ -1,12 +1,8 @@
-<h1>TEST </h1>
-
-<p>This is where I want see everything that is created.....</p>
-
 {{#each blogs as |blog| }}
 <div>
   <div>
     <h2>
-      <a href="/project/{{blog.id}}">{{blog.title}}</a>
+      <a href="/singleBlog/{{blog.id}}">{{blog.title}}</a>
     </h2>
     <p>Created by {{blog.user.username}}</p>
   </div>
