@@ -2,14 +2,18 @@
 
 <p>This is where I want see everything that is created.....</p>
 
+{{#each blogs as |blog| }}
 <div>
-<section>
-    <h2>{{blog.title}}</h2>
-<p>{{blog.body}}</p>
-</section>
-
-//----Not working I need to link these......need to review/ask tutor???? in a bit.
-
-
-
+  <div>
+    <h2>
+      <a href="/project/{{blog.id}}">{{blog.title}}</a>
+    </h2>
+    <p>Created by {{blog.user.username}}</p>
+  </div>
+  <div>
+    <p>
+      {{blog.body}}
+    </p>
+  </div>
 </div>
+{{/each}}
