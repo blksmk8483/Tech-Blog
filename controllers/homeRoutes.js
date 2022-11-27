@@ -49,21 +49,21 @@ router.get('/', async (req, res) => {
     }
   });
 
-  // -----------------New stuff -------
-  router.get('/editSingle/:id', async (req, res) => {
-    try {
-      const blogEdit = await Blog.findByPk(req.params.id);
+  // // -----------------New stuff -------
+  // router.get('/editSingle/:id', async (req, res) => {
+  //   try {
+  //     const blogEdit = await Blog.findByPk(req.params.id);
   
-      const blog = blogEdit.get({ plain: true });
+  //     const blog = blogEdit.get({ plain: true });
   
-      res.render('singleBlog', {
-        ...blog,
-        logged_in: req.session.logged_in
-      });
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  });
+  //     res.render('singleBlog', {
+  //       ...blog,
+  //       logged_in: req.session.logged_in
+  //     });
+  //   } catch (err) {
+  //     res.status(500).json(err);
+  //   }
+  // });
 
 
 
