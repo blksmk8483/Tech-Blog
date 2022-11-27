@@ -9,7 +9,7 @@ const newFormHandler = async (event) => {
         method: 'POST',
         body: JSON.stringify({ 
             title, 
-            body
+            body,
         }),
         headers: {
           'Content-Type': 'application/json',
@@ -41,6 +41,29 @@ const newFormHandler = async (event) => {
     }
   };
   
+  //------new 
+  const editBlog = document.querySelector('blog-id').value;
+
+const editFormHandler = async function(event) {
+  event.preventDefault();
+
+  const title = document.querySelector('#blog-title').value;
+  const body = document.querySelector('#blog-body').value;
+
+  await fetch(`/api/blog/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify({
+      title,
+      body
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+
+  document.location.replace('/dashboard');
+};
+
  
   
   document
@@ -51,3 +74,8 @@ const newFormHandler = async (event) => {
     document
     .querySelector('.blog-list')
     .addEventListener('click', delButtonHandler);
+
+    //-----new
+    document
+  .querySelector('#edit-blog-post')
+  .addEventListener('submit', editFormHandler);

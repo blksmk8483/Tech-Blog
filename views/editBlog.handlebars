@@ -1,25 +1,20 @@
-<div>
-  <h2>{{title}}</h2>
-  <p>{{body}}</p>
-  <p>Created by {{user.username}}</p>
-</div>
-
-
-<div>
-  <div>
+<div class="post card">
+  <div class="card-header">
     <h2>Edit Post</h2>
   </div>
   <form id="edit-blog-post">
     <input class="blog-id" type="hidden" name="blog-id" value="{{blog.id}}" />
 
     <label class="form-label" for="blog-title">Title</label>
-    <input type="text" name="blog-title" value="{{title}}" class="blog-title"/>
+    <input type="text" name="blog-title" value="{{blog.title}}" class="blog-title"/>
 
     <label for="blog-body">Body</label>
-    <textarea name="blog-body" class="blog-body">{{body}}</textarea>
+    <textarea name="blog-body" class="blog-body">{{blog.body}}</textarea>
 
     <button type="submit">Update</button>
 
     <button type="button" id="delete-blog">Delete</button>
   </form>
 </div>
+
+<script src="/js/editBlog.js"></script>

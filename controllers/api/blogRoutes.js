@@ -33,4 +33,31 @@ router.delete('/:id', withAuth, async (req, res) => {
         }
       });
 
+      // ------new stuff 
+router.put('/:id', withAuth, async (req, res) => {
+  try {
+    const edits = await Blog.update(req.body, {
+      where: { id: req.params.id},
+    });
+    res.status(edits).end();
+  } catch (err) {
+    res.status(500).json(err)
+  }
+});
+
+// router.delete('/editSingleBlog/:id', withAuth, async (req, res) => {
+//   try {
+//     const edits = Blog.destroy({
+//       where: {
+//         id: req.params.id,
+//       }
+//     });
+//     res.status(edits).end();
+//   } catch (err) {
+//     res.status(500).json(err)
+//   }
+// });
+
+
+
 module.exports = router;
