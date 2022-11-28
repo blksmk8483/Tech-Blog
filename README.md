@@ -9,8 +9,6 @@ This project (as of Sunday, Nov. 27, 2022) is not done but I am turning in what 
 
 Future for this project
 
--Finish the update/delete of a post.  It currently only can be deleted.
-
 -Add the ability for the user to comment on other users post.
 
 -Style the page. Again, this is just due to time restraints and I am eager to get back to this project in the near future.
