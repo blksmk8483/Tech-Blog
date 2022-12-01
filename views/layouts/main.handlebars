@@ -5,33 +5,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Tech Blog</title>
-  <link rel="stylesheet" href="/css/style.css">  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-<nav class="navbar">
-  <ul>
-    <li class="nav-button"><a href="/">Home</a></li>  
-{{#if logged_in}}
-        <a href="/dashboard">dashboard</a> |
-        <button class="nav-button" id="logout">logout</button>
-        {{else}}
-        <a href="/login">login</a>
-        {{/if}}
-  </ul>
-</nav>
-<header>
-  <h1>The Tech Blog</h1>
-</header>
+  <div class="navHead">
+    <nav class="navbar">
+      <ul>
+        <li class="nav-button"><a href="/">Home</a></li>
+        {{#if logged_in}}
 
+       <li class="nav-button"><a href="/dashboard">dashboard</a></li>
+
+        <li class="nav-button" id="logout">logout</li>
+
+        {{else}}
+        <li class="nav-button"><a href="/login">login</a></li>
+        
+        {{/if}}
+      </ul>
+    </nav>
+    <header>
+      <h1>The Tech Blog</h1>
+    </header>
+  </div>
+  <div class="bodyStyle">
     <main>
 
       {{{ body }}}
     </main>
 
-  {{#if logged_in}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
+    {{#if logged_in}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
+  </div>
 </body>
 
 </html>
