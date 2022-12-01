@@ -75,6 +75,7 @@ const newFormHandler = async (event) => {
     .querySelector('.blog-list')
     .addEventListener('click', delButtonHandler);
 
+
   //   //-----new
   //   document
   // .querySelector('#edit-blog-post')
